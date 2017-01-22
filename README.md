@@ -1,3 +1,22 @@
+**About this Repository**
+
+Tesseract is an epic engine, but it's quite a culture shock, because I'm used to other kinds of engines.
+
+So in the next hours/days/weeks/months/never I will try to make the engine as comfy as possible:
+
+ - Easy gametype scripting via Javascript (Duktape ftw)
+ - Prepare VS solution with all dependencies integrated, e.g. to compile everything as static exe
+ - I only care about server-side Linux and client-side Windows, so the source codes will probably become incompatible at some point
+ - ImGui for epic gui with tabs/docks etc.
+ - Actual REPL console for Javascript for insta results
+ - I don't really get this lispy Cubescript, so I guess I will just circumvent it with Javascript most of the time
+ - OperatorSystem for easy node-like manipulation
+ 
+Well, thats the TODO list for now, lets see what happens.
+
+**Tesserect Readme**
+
+
 Tesseract is a fork of the Cube 2: Sauerbraten engine. The goal of Tesseract
 is to make mapping more fun by using modern dynamic rendering techniques, so
 that you can get instant feedback on lighting changes, not just geometry.
@@ -29,17 +48,20 @@ Editing:
 To make shadowmapped point lights, just make light entities as normal. Optionally you can control the shadowing properties of the light using attribute 5: 0 = shadows, 1 = no shadows, 2 = static shadows - world and mapmodels only (no playermodels or pickups). Shadowmaps are cached from frame to frame if no dynamic entities such as playermodels are rendered into them, so static lights (2) will generally be much faster than normal lights (0) during gameplay and should be used where possible. Unshadowed lights (1) are even faster as they further reduce shading costs, so they should also be used where possible.
 
 To make cascaded shadowmapped sunlight, just use the normal sunlight commands:
-sunlight
-sunlightyaw
-sunlightpitch
+
+> sunlight
+> sunlightyaw
+> sunlightpitch
+
 You can also set sunlightyaw and sunlightpitch from your current direction with the following command:
-getsundir
+
+> getsundir
 
 You can control the diffuse global illumination of sunlight using the following parameters:
-giscale - scales the contribution of indirect light
-gidist - limits the distance which indirect light travels (smaller values are more intense, but higher values allow farther travel)
-giaoscale - controls the contribution of atmospheric light
-skylight - controls the color of atmospheric light
+> giscale - scales the contribution of indirect light
+> gidist - limits the distance which indirect light travels (smaller values are more intense, but higher values allow farther travel)
+> giaoscale - controls the contribution of atmospheric light
+> skylight - controls the color of atmospheric light
 
 Screen-space ambient occlusion affects mostly ambient light and to a lesser degree sunlight,
 but it does not affect point lights. If you want to make use of SSAO in your map, just use 
@@ -58,7 +80,7 @@ To fix this you still need to use the calclight command, however, it no longer g
 It just does a remip optimization pass as well as calculates smoothed normals to make things look better.
 Eventually this may be done differently using some sort of background optimization while editing.
 
-To make decals:
+**To make decals:**
 
 newent decal SLOT YAW PITCH ROLL SIZE
 
@@ -66,18 +88,18 @@ If you don't specify the yaw, pitch, and roll, or leave them all 0, then newent 
 The slot refers to a decal slot in the map configuration, starting at offset 0.
 The size is specified in cube units.
 
-To make decal slots:
+**To make decal slots:**
 
-decelreset // functions like texture reset, clears all decal texture slots
+> decelreset // functions like texture reset, clears all decal texture slots
 
-setshader bumpspecmapdecal  // shaders work like for world shaders, but with the -decal suffix instead of -world
-texture decal "diffuse.png" // all decal slots start with the "decal" sub-slot instead of "0", and this texture must have an alpha-channel
-texture n "normals.png"
-texture s "spec.png"
+> setshader bumpspecmapdecal  // shaders work like for world shaders, but with the -decal suffix instead of -world
+> texture decal "diffuse.png" // all decal slots start with the "decal" sub-slot instead of "0", and this texture must have an alpha-channel
+> texture n "normals.png"
+> texture s "spec.png"
 
 To make volumetric lights:
 
-Set attribute 5 of a light entity to 4.
+> Set attribute 5 of a light entity to 4.
 
 The intensity of the volumetric lighting medium can be controlled by volscale and the color can by controlled by volcolour.
 
