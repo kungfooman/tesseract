@@ -1,7 +1,6 @@
+#include <kung/include_gl.h>
 #include <SDL.h>
-#include "../imgui/examples/sdl_opengl3_example/imgui_impl_sdl_gl3.h"
-#include "../imgui/examples/libs/gl3w/GL/gl3w.h"
-
+#include "imgui/examples/sdl_opengl3_example/imgui_impl_sdl_gl3.h"
 
 #include "engine.h"
 

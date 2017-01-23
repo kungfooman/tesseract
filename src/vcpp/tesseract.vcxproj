@@ -137,6 +137,9 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">tesseract</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">tesseract</TargetName>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSdk_71A_IncludePath);$(ProjectDir)..\kung;$(ProjectDir)..</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
@@ -243,13 +246,13 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>StackFrameRuntimeCheck</BasicRuntimeChecks>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <FloatingPointModel>Fast</FloatingPointModel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>cube.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)cube.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level3</WarningLevel>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <SuppressStartupBanner>false</SuppressStartupBanner>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <CompileAs>Default</CompileAs>
     </ClCompile>
@@ -402,6 +405,8 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\gtkradiant\GtkRadiant\Craft\src\format_cod2_xmodel.h" />
+    <ClInclude Include="..\..\..\..\gtkradiant\GtkRadiant\Craft\src\format_iwi.h" />
     <ClInclude Include="..\engine\engine.h" />
     <ClInclude Include="..\engine\light.h" />
     <ClInclude Include="..\engine\mpr.h" />
@@ -426,13 +431,84 @@
     <ClInclude Include="..\engine\textedit.h" />
     <ClInclude Include="..\engine\texture.h" />
     <ClInclude Include="..\engine\vertmodel.h" />
-    <ClInclude Include="..\imgui\imconfig.h" />
-    <ClInclude Include="..\imgui\imgui.h" />
-    <ClInclude Include="..\imgui\imgui_dock.h" />
-    <ClInclude Include="..\imgui\imgui_internal.h" />
-    <ClInclude Include="..\imgui\stb_rect_pack.h" />
-    <ClInclude Include="..\imgui\stb_textedit.h" />
-    <ClInclude Include="..\imgui\stb_truetype.h" />
+    <ClInclude Include="..\kung\duktape\bind_memory.h" />
+    <ClInclude Include="..\kung\duktape\duktape.h" />
+    <ClInclude Include="..\kung\duktape\duktapestuff.h" />
+    <ClInclude Include="..\kung\duktape\duk_config.h" />
+    <ClInclude Include="..\kung\duktape\duk_internal_stuff.h" />
+    <ClInclude Include="..\kung\imgui\imconfig.h" />
+    <ClInclude Include="..\kung\imgui\imgui.h" />
+    <ClInclude Include="..\kung\imgui\imgui_dock.h" />
+    <ClInclude Include="..\kung\imgui\imgui_internal.h" />
+    <ClInclude Include="..\kung\imgui\stb_rect_pack.h" />
+    <ClInclude Include="..\kung\imgui\stb_textedit.h" />
+    <ClInclude Include="..\kung\imgui\stb_truetype.h" />
+    <ClInclude Include="..\kung\include_glfw.h" />
+    <ClInclude Include="..\kung\include_imgui.h" />
+    <ClInclude Include="..\kung\include_devil.h" />
+    <ClInclude Include="..\kung\include_duktape.h" />
+    <ClInclude Include="..\kung\include_gl.h" />
+    <ClInclude Include="..\kung\include_glm.h" />
+    <ClInclude Include="..\kung\include_physfs.h" />
+    <ClInclude Include="..\kung\include_soil.h" />
+    <ClInclude Include="..\kung\matrix.h" />
+    <ClInclude Include="..\kung\mesh.h" />
+    <ClInclude Include="..\kung\opsys\op.h" />
+    <ClInclude Include="..\kung\opsys\opsystem.h" />
+    <ClInclude Include="..\kung\opsys\opsystem_explorer.h" />
+    <ClInclude Include="..\kung\opsys\opsystem_hierarchy.h" />
+    <ClInclude Include="..\kung\opsys\opsystem_imgui_console.h" />
+    <ClInclude Include="..\kung\opsys\opsystem_opengl.h" />
+    <ClInclude Include="..\kung\opsys\opsystem_repl.h" />
+    <ClInclude Include="..\kung\opsys\opsystem_utils.h" />
+    <ClInclude Include="..\kung\opsys\op_all.h" />
+    <ClInclude Include="..\kung\opsys\op_astar.h" />
+    <ClInclude Include="..\kung\opsys\op_base.h" />
+    <ClInclude Include="..\kung\opsys\op_checkerboard.h" />
+    <ClInclude Include="..\kung\opsys\op_cos.h" />
+    <ClInclude Include="..\kung\opsys\op_craft.h" />
+    <ClInclude Include="..\kung\opsys\op_cube.h" />
+    <ClInclude Include="..\kung\opsys\op_divide.h" />
+    <ClInclude Include="..\kung\opsys\op_expression.h" />
+    <ClInclude Include="..\kung\opsys\op_file.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_attrib.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_buffer.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_fragment_shader.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_framebuffer.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_legacy.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_program.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_uniform.h" />
+    <ClInclude Include="..\kung\opsys\op_gl_vertex_shader.h" />
+    <ClInclude Include="..\kung\opsys\op_if.h" />
+    <ClInclude Include="..\kung\opsys\op_javascript.h" />
+    <ClInclude Include="..\kung\opsys\op_keyboard.h" />
+    <ClInclude Include="..\kung\opsys\op_logger.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix_identity.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix_multiply.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix_ortho.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix_rotate.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix_scale.h" />
+    <ClInclude Include="..\kung\opsys\op_matrix_translate.h" />
+    <ClInclude Include="..\kung\opsys\op_mesh_editor.h" />
+    <ClInclude Include="..\kung\opsys\op_minus.h" />
+    <ClInclude Include="..\kung\opsys\op_multiply.h" />
+    <ClInclude Include="..\kung\opsys\op_negate.h" />
+    <ClInclude Include="..\kung\opsys\op_perspective.h" />
+    <ClInclude Include="..\kung\opsys\op_plus.h" />
+    <ClInclude Include="..\kung\opsys\op_prefab.h" />
+    <ClInclude Include="..\kung\opsys\op_prefab_input.h" />
+    <ClInclude Include="..\kung\opsys\op_prefab_output.h" />
+    <ClInclude Include="..\kung\opsys\op_random_shit.h" />
+    <ClInclude Include="..\kung\opsys\op_renderer.h" />
+    <ClInclude Include="..\kung\opsys\op_sin.h" />
+    <ClInclude Include="..\kung\opsys\op_soil.h" />
+    <ClInclude Include="..\kung\opsys\op_switch.h" />
+    <ClInclude Include="..\kung\opsys\op_tofloat.h" />
+    <ClInclude Include="..\kung\opsys\op_value.h" />
+    <ClInclude Include="..\kung\opsys\op_xmodel.h" />
+    <ClInclude Include="..\kung\primitives_3d.h" />
+    <ClInclude Include="..\kung\tab_physfs.h" />
     <ClInclude Include="..\shared\command.h" />
     <ClInclude Include="..\shared\cube.h" />
     <ClInclude Include="..\shared\ents.h" />
@@ -449,6 +525,8 @@
     <ClInclude Include="..\game\game.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\gtkradiant\GtkRadiant\Craft\src\format_cod2_xmodel.cpp" />
+    <ClCompile Include="..\..\..\..\gtkradiant\GtkRadiant\Craft\src\format_iwi.cpp" />
     <ClCompile Include="..\engine\pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -979,16 +1057,77 @@
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)engine.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)engine.pch</PrecompiledHeaderOutputFile>
     </ClCompile>
-    <ClCompile Include="..\imgui\examples\libs\gl3w\GL\gl3w.c" />
-    <ClCompile Include="..\imgui\examples\sdl_opengl3_example\imgui_impl_sdl_gl3.cpp" />
-    <ClCompile Include="..\imgui\imgui.cpp" />
-    <ClCompile Include="..\imgui\imgui_demo.cpp" />
-    <ClCompile Include="..\imgui\imgui_dock.cpp" />
-    <ClCompile Include="..\imgui\imgui_draw.cpp" />
-    <ClCompile Include="..\imgui\imgui_impl_glfw_gl3.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="..\kung\duktape\bind_memory.cpp" />
+    <ClCompile Include="..\kung\duktape\duktape.c" />
+    <ClCompile Include="..\kung\duktape\js_stuff.cpp" />
+    <ClCompile Include="..\kung\globals.cpp" />
     <ClCompile Include="..\kung\imguistuff.cpp" />
+    <ClCompile Include="..\kung\imgui\examples\libs\gl3w\GL\gl3w.c" />
+    <ClCompile Include="..\kung\imgui\examples\sdl_opengl3_example\imgui_impl_sdl_gl3.cpp" />
+    <ClCompile Include="..\kung\imgui\imgui.cpp" />
+    <ClCompile Include="..\kung\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\kung\imgui\imgui_dock.cpp" />
+    <ClCompile Include="..\kung\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\kung\include_physfs.cpp" />
+    <ClCompile Include="..\kung\matrix.cpp" />
+    <ClCompile Include="..\kung\mesh.cpp" />
+    <ClCompile Include="..\kung\opsys\op.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_explorer.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_hierarchy.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_imgui_console.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_javascript.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_opengl.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_ops_editor.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_repl.cpp" />
+    <ClCompile Include="..\kung\opsys\opsystem_utils.cpp" />
+    <ClCompile Include="..\kung\opsys\op_all.cpp" />
+    <ClCompile Include="..\kung\opsys\op_astar.cpp" />
+    <ClCompile Include="..\kung\opsys\op_checkerboard.cpp" />
+    <ClCompile Include="..\kung\opsys\op_cos.cpp" />
+    <ClCompile Include="..\kung\opsys\op_craft.cpp" />
+    <ClCompile Include="..\kung\opsys\op_cube.cpp" />
+    <ClCompile Include="..\kung\opsys\op_divide.cpp" />
+    <ClCompile Include="..\kung\opsys\op_expression.cpp" />
+    <ClCompile Include="..\kung\opsys\op_file.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_attrib.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_buffer.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_fragment_shader.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_framebuffer.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_legacy.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_program.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_uniform.cpp" />
+    <ClCompile Include="..\kung\opsys\op_gl_vertex_shader.cpp" />
+    <ClCompile Include="..\kung\opsys\op_if.cpp" />
+    <ClCompile Include="..\kung\opsys\op_javascript.cpp" />
+    <ClCompile Include="..\kung\opsys\op_keyboard.cpp" />
+    <ClCompile Include="..\kung\opsys\op_logger.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix_identity.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix_multiply.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix_ortho.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix_rotate.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix_scale.cpp" />
+    <ClCompile Include="..\kung\opsys\op_matrix_translate.cpp" />
+    <ClCompile Include="..\kung\opsys\op_mesh_editor.cpp" />
+    <ClCompile Include="..\kung\opsys\op_minus.cpp" />
+    <ClCompile Include="..\kung\opsys\op_multiply.cpp" />
+    <ClCompile Include="..\kung\opsys\op_negate.cpp" />
+    <ClCompile Include="..\kung\opsys\op_perspective.cpp" />
+    <ClCompile Include="..\kung\opsys\op_plus.cpp" />
+    <ClCompile Include="..\kung\opsys\op_prefab.cpp" />
+    <ClCompile Include="..\kung\opsys\op_prefab_input.cpp" />
+    <ClCompile Include="..\kung\opsys\op_prefab_output.cpp" />
+    <ClCompile Include="..\kung\opsys\op_random_shit.cpp" />
+    <ClCompile Include="..\kung\opsys\op_renderer.cpp" />
+    <ClCompile Include="..\kung\opsys\op_sin.cpp" />
+    <ClCompile Include="..\kung\opsys\op_soil.cpp" />
+    <ClCompile Include="..\kung\opsys\op_switch.cpp" />
+    <ClCompile Include="..\kung\opsys\op_tofloat.cpp" />
+    <ClCompile Include="..\kung\opsys\op_value.cpp" />
+    <ClCompile Include="..\kung\opsys\op_xmodel.cpp" />
+    <ClCompile Include="..\kung\primitives_3d.cpp" />
+    <ClCompile Include="..\kung\tab_physfs.cpp" />
     <ClCompile Include="..\shared\crypto.cpp" />
     <ClCompile Include="..\shared\geom.cpp" />
     <ClCompile Include="..\shared\glemu.cpp" />
