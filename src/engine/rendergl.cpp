@@ -2798,6 +2798,7 @@ void gl_setupframe(bool force)
     setuplights();
 }
 
+void render_imgui();
 void gl_drawframe()
 {
     synctimers();
@@ -2810,6 +2811,9 @@ void gl_drawframe()
     if(mainmenu) gl_drawmainmenu();
     else gl_drawview();
     UI::render();
+
+	render_imgui();
+	// this draws the console text and hud cursor
     gl_drawhud();
 }
 

@@ -245,7 +245,7 @@
       <BasicRuntimeChecks>StackFrameRuntimeCheck</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <FloatingPointModel>Fast</FloatingPointModel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>cube.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)cube.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level3</WarningLevel>
@@ -426,6 +426,13 @@
     <ClInclude Include="..\engine\textedit.h" />
     <ClInclude Include="..\engine\texture.h" />
     <ClInclude Include="..\engine\vertmodel.h" />
+    <ClInclude Include="..\imgui\imconfig.h" />
+    <ClInclude Include="..\imgui\imgui.h" />
+    <ClInclude Include="..\imgui\imgui_dock.h" />
+    <ClInclude Include="..\imgui\imgui_internal.h" />
+    <ClInclude Include="..\imgui\stb_rect_pack.h" />
+    <ClInclude Include="..\imgui\stb_textedit.h" />
+    <ClInclude Include="..\imgui\stb_truetype.h" />
     <ClInclude Include="..\shared\command.h" />
     <ClInclude Include="..\shared\cube.h" />
     <ClInclude Include="..\shared\ents.h" />
@@ -972,6 +979,16 @@
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)engine.pch</PrecompiledHeaderOutputFile>
       <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)engine.pch</PrecompiledHeaderOutputFile>
     </ClCompile>
+    <ClCompile Include="..\imgui\examples\libs\gl3w\GL\gl3w.c" />
+    <ClCompile Include="..\imgui\examples\sdl_opengl3_example\imgui_impl_sdl_gl3.cpp" />
+    <ClCompile Include="..\imgui\imgui.cpp" />
+    <ClCompile Include="..\imgui\imgui_demo.cpp" />
+    <ClCompile Include="..\imgui\imgui_dock.cpp" />
+    <ClCompile Include="..\imgui\imgui_draw.cpp" />
+    <ClCompile Include="..\imgui\imgui_impl_glfw_gl3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\kung\imguistuff.cpp" />
     <ClCompile Include="..\shared\crypto.cpp" />
     <ClCompile Include="..\shared\geom.cpp" />
     <ClCompile Include="..\shared\glemu.cpp" />
